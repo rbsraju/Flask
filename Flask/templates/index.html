@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Prediction</title>
+    <style>
+        body {
+            background-image: 'background.png'; 
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex; /* Center the container */
+            justify-content: center; /* Horizontally center the container */
+            align-items: center; /* Vertically center the container */
+            
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn {
+            background-color: #007bff; /* Blue button color */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body background="background.png">
+    <div class="container">
+        <h1>Delivery Prediction</h1>
+        <form action="/" method="POST">
+            <div class="form-group">
+                <label for="Warehouse_block">Warehouse Block:</label>
+                <select name="Warehouse_block" required>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="F">F</option>
+                    <!-- Add more options if needed -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Mode_of_Shipment">Mode of Shipment:</label>
+                <select name="Mode_of_Shipment" required>
+                    <option value="Ship">Ship</option>
+                    <option value="Flight">Flight</option>
+                    <option value="Road">Road</option>
+                    <!-- Add more options if needed -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Customer_care_calls">Customer Care Calls:</label>
+                <input type="number" name="Customer_care_calls" required>
+            </div>
+            <div class="form-group">
+                <label for="Customer_rating">Customer Rating:</label>
+                <input type="number" name="Customer_rating" required>
+            </div>
+            <div class="form-group">
+                <label for="Cost_of_the_Product">Cost of the Product:</label>
+                <input type="number" name="Cost_of_the_Product" required>
+            </div>
+            <div class="form-group">
+                <label for="Prior_purchases">Prior Purchases:</label>
+                <input type="number" name="Prior_purchases" required>
+            </div>
+            <div class="form-group">
+                <label for="Product_importance">Product Importance:</label>
+                <select name="Product_importance" required>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Gender">Gender:</label>
+                <select name="Gender" required>
+                    <option value="F">Female</option>
+                    <option value="M">Male</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Discount_offered">Discount Offered:</label>
+                <input type="number" name="Discount_offered" required>
+            </div>
+            <div class="form-group">
+                <label for="Weight_in_gms">Weight (in gms):</label>
+                <input type="number" name="Weight_in_gms" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn">Predict Delivery</button>
+            </div>
+        </form>
+        <div id="result">
+            {% if result %}
+                <p>{{ result }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
